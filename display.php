@@ -59,7 +59,7 @@ if($result){
 
 
 <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-<a href="login.php"><button type="button" class="btn btn-primary ml-4">Login</button></a>
+<a href="login.php"><button type="button" class="btn btn-primary ml-5">Login</button></a>
 
 </body>
 </html>
