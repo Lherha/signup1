@@ -2,6 +2,7 @@
 $success=0;
 $user=0;
 $invalid=0;
+
 if($_SERVER['REQUEST_METHOD']=='POST'){
     include 'connect.php';
     $username=$_POST['username'];
@@ -9,48 +10,37 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $cpassword=$_POST['cpassword'];
 
      // Check if any of the input fields is empty
-     if (empty($username) || empty($password) || empty($cpassword)) {
-      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Error:</strong> All fields must be filled.
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>';
-      exit(); // Stop execution if any field is empty
+    if (empty($username) || empty($password) || empty($cpassword)) {
+      $input_error = 1;
+  } else {
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+      $sql = "SELECT * FROM `registration` WHERE username='$username'";
+      $result = mysqli_query($con, $sql);
+
+      if ($result) {
+          $num = mysqli_num_rows($result);
+
+          if ($num > 0) {
+              $user = 1;
+          } else {
+              if ($password === $cpassword) {
+                  $sql = "INSERT INTO `registration` (username, password) VALUES ('$username', '$hashedPassword')";
+                  $result = mysqli_query($con, $sql);
+
+                  if ($result) {
+                      $success = 1;
+                      header('location:display.php');
+                  }
+              } else {
+                  $invalid = 1;
+              }
+          }
+      }
   }
-
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-
-  
-
-    $sql="Select * FROM `registration` WHERE username='$username'";
-
-    $result=mysqli_query($con,$sql);
-    if($result){
-        $num=mysqli_num_rows($result);
-        if($num>0){
-            // echo "User already exist";
-            $user=1;
-        }else{
-            if($password===$cpassword){
-            $sql="INSERT INTO `registration`(username,password) VALUES('$username','$hashedPassword')";
-            $result=mysqli_query($con,$sql);
-            if($result){
-                    // echo "Signup successful";
-                    $success=1;
-                    header('location:display.php');
-            }
-                }else{
-                    $invalid=1;
-                }
-        }
-    }
-
 }
-
-
 ?>
+
 
 
 
