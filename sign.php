@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
   
 
-    $sql="Select * from `registration` where username='$username'";
+    $sql="Select * FROM `registration` WHERE username='$username'";
 
     $result=mysqli_query($con,$sql);
     if($result){
