@@ -2,7 +2,7 @@
 $success=0;
 $user=0;
 $invalid=0;
-
+$input_error = 0;
 if($_SERVER['REQUEST_METHOD']=='POST'){
     include 'connect.php';
     $username=$_POST['username'];
