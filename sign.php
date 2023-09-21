@@ -59,6 +59,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   <body>
 
 <?php
+
+
 if($user){
     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Ohh no sorry </strong>User already exist
