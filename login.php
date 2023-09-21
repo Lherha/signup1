@@ -68,7 +68,7 @@ if($invalid){
     <form action="login.php" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="text" class="form-control" placeholder="Enter your email" name="email">
+    <input type="text" class="form-control" placeholder="Enter your username" name="username">
   </div>
 
   <div class="form-group">
