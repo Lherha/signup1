@@ -1,13 +1,14 @@
 <?php
-$HOSTNAME='localhost';
-$USERNAME='root';
-$PASSWORD='';
-$DATABASE='signupforms';
+$HOSTNAME = 'localhost';
+$USERNAME = 'your_username';
+$PASSWORD = 'your_password';
+$DATABASE = 'signupforms';
 
+// Create a connection to the database
+$con = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DATABASE);
 
-$con=mysqli_connect($HOSTNAME,$USERNAME,$PASSWORD,$DATABASE);
-
-if(!$con){
-    die(mysqli_error($con));
+// Check the connection
+if (mysqli_connect_errno()) {
+    die('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 ?>
