@@ -57,7 +57,16 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <title>Signup page</title>
   </head>
   <body>
-
+  <?php
+if ($input_error) {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error:</strong> All fields must be filled.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>';
+}
+?>
 <?php
 if($user){
     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
