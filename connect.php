@@ -1,7 +1,7 @@
 <?php
 $HOSTNAME = 'localhost';
-$USERNAME = 'your_username';
-$PASSWORD = 'your_password';
+$USERNAME = 'root';
+$PASSWORD = '';
 $DATABASE = 'signupforms';
 
 // Create a connection to the database
