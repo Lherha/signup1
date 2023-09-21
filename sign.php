@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $user=1;
         }else{
             if($password===$cpassword){
-            $sql="insert into `registration`(username,password) values('$username','$hashedPassword')";
+            $sql="INSERT INTO `registration`(username,password) VALUES('$username','$hashedPassword')";
             $result=mysqli_query($con,$sql);
             if($result){
                     // echo "Signup successful";
