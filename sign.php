@@ -8,7 +8,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $password=$_POST['password'];
     $cpassword=$_POST['cpassword'];
 
-    
+     // Check if any of the input fields is empty
+     if (empty($username) || empty($password) || empty($cpassword)) {
+      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Error:</strong> All fields must be filled.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>';
+      exit(); // Stop execution if any field is empty
+  }
+
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
